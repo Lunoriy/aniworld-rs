@@ -1,0 +1,43 @@
+[package]
+name = "aniworld-rs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.78"
+description = "A native Rust rewrite of AniWorld Downloader: parallel HLS downloads, bounded memory, and a TUI for Linux"
+license = "MIT"
+
+[[bin]]
+name = "aniworld-rs"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+aes = "0.8"
+base64 = "0.22"
+bytes = "1"
+cbc = "0.1"
+clap = { version = "4", features = ["derive"] }
+crossterm = "0.28"
+futures = "0.3"
+html-escape = "0.2"
+indicatif = "0.17"
+rand = "0.8"
+ratatui = "0.29"
+regex = "1"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "gzip", "brotli", "json", "stream"] }
+scraper = "0.20"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "fs", "io-util", "sync", "time", "signal", "process", "net"] }
+url = "2"
+axum = "0.8"
+tokio-util = { version = "0.7.19", features = ["io"] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true

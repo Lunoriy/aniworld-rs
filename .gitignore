@@ -1,0 +1,4 @@
+/target
+/dist
+*.part.json
+.DS_Store
